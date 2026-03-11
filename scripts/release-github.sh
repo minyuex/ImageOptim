@@ -10,7 +10,8 @@
 #
 # Usage:
 #   ./scripts/release-github.sh [VERSION]
-#   ./scripts/release-github.sh 1.9.4
+#   ./scripts/release-github.sh 1.9.5
+#   RELEASE_YES=1 ./scripts/release-github.sh   # skip uncommitted-changes prompt
 #
 # If VERSION is omitted, reads from release.xcconfig.
 
@@ -44,7 +45,7 @@ echo ""
 git submodule update --init --recursive
 
 # Check git status
-if [ -n "$(git status --porcelain)" ]; then
+if [ -n "$(git status --porcelain)" ] && [ -z "$RELEASE_YES" ]; then
     echo "Warning: Uncommitted changes detected. Commit before releasing."
     git status --short
     read -p "Continue anyway? (y/N) " -n 1 -r

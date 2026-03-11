@@ -19,6 +19,10 @@
 - DMG: `ImageOptim-1.9.5.dmg` for distribution
 - tar.bz2: `ImageOptim1.9.5.tar.bz2` for Sparkle updates
 
+### v1.9.5 (2025-03-11)
+
+**Version bump** – build and release tooling updates.
+
 ### v1.9.4 (2025-03-11)
 
 **Apple Silicon (arm64) Support**
@@ -32,8 +36,8 @@
 - One-step build script: `./scripts/build-dmg.sh` builds and creates DMG
 
 **Release Assets**
-- DMG: `ImageOptim-1.9.4.dmg` for distribution
-- tar.bz2: `ImageOptim1.9.4.tar.bz2` for Sparkle updates
+- DMG: `ImageOptim-1.9.5.dmg` for distribution
+- tar.bz2: `ImageOptim1.9.5.tar.bz2` for Sparkle updates
 
 ## Building
 

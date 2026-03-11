@@ -8,8 +8,8 @@
 # Examples:
 #   ./scripts/package.sh                                    # uses default paths
 #   ./scripts/package.sh build/Release                      # specify build dir
-#   ./scripts/package.sh build/Release 1.9.4                 # with version
-#   ./scripts/package.sh build/Release 1.9.4 dmg            # also create DMG
+#   ./scripts/package.sh build/Release 1.9.5                 # with version
+#   ./scripts/package.sh build/Release 1.9.5 dmg            # also create DMG
 
 set -e
 
@@ -21,6 +21,8 @@ IMAGEOPTIM_DIR="$PROJECT_DIR/imageoptim"
 # Xcode default: ~/Library/Developer/Xcode/DerivedData/<Project>/Build/Products/Release
 DEFAULT_BUILD_DIR="$PROJECT_DIR/build/Release"
 BUILD_DIR="${1:-$DEFAULT_BUILD_DIR}"
+# Resolve to absolute path (critical when cd'ing into BUILD_DIR for tar)
+BUILD_DIR="$(cd "$PROJECT_DIR" && cd "$BUILD_DIR" && pwd)"
 VERSION="${2:-}"
 CREATE_DMG="${3:-}"
 
@@ -29,7 +31,7 @@ if [ -z "$VERSION" ] && [ -f "$BUILD_DIR/ImageOptim.app/Contents/Info.plist" ]; 
     VERSION=$(plutil -extract CFBundleShortVersionString raw "$BUILD_DIR/ImageOptim.app/Contents/Info.plist" 2>/dev/null) || true
 fi
 if [ -z "$VERSION" ]; then
-    VERSION="1.9.4"  # fallback
+    VERSION="1.9.5"  # fallback
 fi
 
 APP_PATH="$BUILD_DIR/ImageOptim.app"

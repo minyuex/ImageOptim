@@ -41,7 +41,7 @@ fi
 echo ""
 echo "=== Step 3: Create DMG ==="
 RELEASE_DIR="$BUILD_DIR/Build/Products/Release"
-VERSION=$(plutil -extract CFBundleShortVersionString raw "$RELEASE_APP/Contents/Info.plist" 2>/dev/null) || VERSION="1.9.4"
+VERSION=$(plutil -extract CFBundleShortVersionString raw "$RELEASE_APP/Contents/Info.plist" 2>/dev/null) || VERSION="1.9.5"
 DMG_NAME="ImageOptim-${VERSION}.dmg"
 
 # Create DMG directly (package.sh tar may fail when code signing is disabled)
